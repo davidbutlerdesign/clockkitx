@@ -1,7 +1,16 @@
 # ClockKitX
-Cross-platform implementation of https://github.com/camilleg/clockkit
+Cross-platform port of https://github.com/camilleg/clockkit.
 
-Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
+## Build
+
+ClockKitX requires the following to be installed in order to build
+- [CMake](https://cmake.org/)
+- [Conan](https://conan.io/)
+
+The following dependencies are automatically installed via Conan during the build process
+- [Poco](https://github.com/pocoproject/poco)
+
+## License
 
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License][cc-by].
