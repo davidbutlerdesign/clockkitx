@@ -21,7 +21,7 @@ target_sources(${PROJECT_NAME}
 	PRIVATE
 		"src/Clock.cpp"
 		"src/ClockClient.cpp"
-		"src/ClockClientMain.cpp"
+		"examples/ClockClient/main.cpp"
 		
 		"src/ClockPacket.cpp"
 		"src/ClockServer.cpp"
