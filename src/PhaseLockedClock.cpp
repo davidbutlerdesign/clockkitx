@@ -6,7 +6,8 @@
 namespace clockkitx
 {
 	PhaseLockedClock::PhaseLockedClock(Clock& primary, Clock& reference)
-		: primaryClock_(primary),
+		: isStopThread_(false),
+		  primaryClock_(primary),
 		  referenceClock_(reference),
 		  variableFrequencyClock_(primary),
 		  updateInterval_(1000000),
@@ -84,7 +85,7 @@ namespace clockkitx
 			update();
 
 			// todo:
-			// put in a timestamp for the last successfull update
+			// put in a timestamp for the last successful update
 			// if it has been a while, we declare this clock out of sync.
 
 			const double variance = updateInterval_ / 10.0;
@@ -130,7 +131,7 @@ namespace clockkitx
 			return;
 		}
 
-		// mark a timestamp for sucessfull update.
+		// mark a timestamp for successful update.
 		lastUpdate_ = primaryClock_.getValue();
 	}
 

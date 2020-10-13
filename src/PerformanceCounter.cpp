@@ -1,11 +1,12 @@
 #include "PerformanceCounter.h"
+
+#ifdef POCO_OS_FAMILY_WINDOWS
+
+#include <Windows.h>
 #include "Exceptions.h"
-#include <windows.h>
 
 namespace clockkitx
 {
-	using namespace std;
-
 	PerformanceCounter PerformanceCounter::instance_;
 
 	PerformanceCounter::PerformanceCounter()
@@ -13,6 +14,7 @@ namespace clockkitx
 		LARGE_INTEGER rate;
 		if (!QueryPerformanceFrequency(&rate))
 			throw ClockException("Error getting performance counter frequency");
+		
 		freqConversion_ = 1000000.0 / static_cast<double>(rate.QuadPart);
 	}
 
@@ -26,6 +28,9 @@ namespace clockkitx
 		LARGE_INTEGER qpc;
 		if (!QueryPerformanceCounter(&qpc))
 			throw ClockException("Error getting performance counter");
+		
 		return static_cast<timestamp_t>(static_cast<double>(qpc.QuadPart) * freqConversion_);
 	}
 }
+
+#endif
